@@ -31,6 +31,9 @@ export default function RootLayout({
           </a>
         </header>
         {children}
+        <footer className="fixed bottom-2 left-1/2 z-50 transform -translate-x-1/2">
+          @Created by とりさん
+        </footer>
       </body>
     </html>
   );
