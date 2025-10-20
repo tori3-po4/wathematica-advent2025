@@ -23,10 +23,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="jp">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <header className="fixed top-4 left-4 z-50">
+          <a href="https://wathematica.github.io/" >
+            <img src="/wathematica_logo.png" alt="ロゴ" className="h-12 w-12 rounded-full shadow-md" />
+          </a>
+        </header>
         {children}
       </body>
     </html>
