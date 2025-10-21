@@ -1,16 +1,6 @@
-'use client';
-import { useState, useEffect } from "react";
 
-export default function Calendar() {
-    const [currentDate, setCurrentDate] = useState(new Date());
 
-    useEffect(() => {
-        setCurrentDate(new Date());
-        const interval = setInterval(() => {
-            setCurrentDate(new Date());
-        }, 60 * 1000);
-        return () => clearInterval(interval);
-    }, []);
+export default function Calendar({ currentDate }: { currentDate: Date }) {
 
     return (
         <div className="container mx-auto">
@@ -31,21 +21,23 @@ export default function Calendar() {
                     const articleDate = new Date(2025, 11, day, 0, 0, 0);
                     const isPublished = currentDate >= articleDate;
 
-                    i
 
-                    return isPublished ? (
-                        <a key={i} href={`#day-${i + 1}`} className="aspect-square  rounded-xl flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
-                            <span className="text-2xl font-bold">{i + 1}</span>
-                        </a>
-                    ) : (<div
-                        key={i}
-                        className="aspect-square  rounded-lg flex items-center justify-center opacity-40 cursor-not-allowed bg-gray-100 relative"
-                    >
-                        <span className="text-2xl font-bold text-gray-400">{day}</span>
-                        <span className="absolute top-1 right-1 text-xs">🔒</span>
-                    </div>);
+                    return (<Daytag key={day} day={day} isunlocked={isPublished} />);
                 })}
             </div>
         </div>
     )
+}
+
+export function Daytag({ day, isunlocked }: { day: number; isunlocked: boolean }) {
+    return (
+        isunlocked ? (<a key={day} href={`#day-${day}`} className="aspect-square  rounded-xl flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+            <span className="text-2xl font-bold">{day + 1}</span>
+        </a>) : (<div
+            key={null}
+            className="aspect-square  rounded-lg flex items-center justify-center opacity-40 cursor-not-allowed bg-gray-100 relative"
+        >
+            <span className="text-2xl font-bold text-gray-400">{day}</span>
+            <span className="absolute top-1 right-1 text-xs">🔒</span>
+        </div>));
 }

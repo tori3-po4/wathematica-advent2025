@@ -1,7 +1,18 @@
+'use client';
+import { useState, useEffect } from "react";
 import Calendar from './calendar';
 import ArticleList from './articlelist';
 
 export default function Home() {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  useEffect(() => {
+    setCurrentDate(new Date());
+    const interval = setInterval(() => {
+      setCurrentDate(new Date());
+    }, 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div className="flex items-center justify-center min-h-screen">
@@ -16,8 +27,8 @@ export default function Home() {
       <p className="font-light text-center mb-8">
         『Wathematica Advent Calendar 2025』とは、12月1日から12月25日までの毎日Wathematicaのメンバーが記事を公開する企画です。<br />
       </p>
-      <Calendar />
-      <ArticleList />
+      <Calendar currentDate={currentDate} />
+      <ArticleList currentDate={currentDate} />
     </>
   );
 }

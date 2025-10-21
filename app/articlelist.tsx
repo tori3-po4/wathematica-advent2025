@@ -1,17 +1,6 @@
-'use client';
-import { useState, useEffect } from "react";
 
-export default function ArticleList() {
-    const [currentDate, setCurrentDate] = useState(new Date());
 
-    useEffect(() => {
-        setCurrentDate(new Date());
-
-        const interval = setInterval(() => {
-            setCurrentDate(new Date());
-        }, 60 * 1000);
-        return () => clearInterval(interval);
-    }, []);
+export default function ArticleList({ currentDate }: { currentDate: Date }) {
 
     return (
         <div className="mt-8 flex items-center justify-center">
