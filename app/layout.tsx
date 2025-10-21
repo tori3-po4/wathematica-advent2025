@@ -26,8 +26,10 @@ export default function RootLayout({
     <html lang="jp">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <header className="fixed top-4 left-4 z-50">
-          <a href="https://wathematica.github.io/" >
-            <img src="/wathematica_logo.png" alt="ロゴ" className="h-12 w-12 rounded-full shadow-md" />
+          <a
+            href="https://wathematica.github.io/"
+            className="block transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95" >
+            <img src="/wathematica_logo.png" alt="ロゴ" className="h-12 w-12 rounded-full shadow-md hover:shadow-xl duration-300" />
           </a>
         </header>
         {children}
