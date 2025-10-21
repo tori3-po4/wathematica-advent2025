@@ -1,8 +1,24 @@
 
 export default function Calendar() {
     return (
-        <div>
-            カレンダー
+        <div className="container mx-auto">
+            <ul className="grid grid-cols-7 gap-4 mb-2">
+                <li className="text-center text-red-500">Sun</li>
+                <li className="text-center">Mon</li>
+                <li className="text-center">Tue</li>
+                <li className="text-center">Wed</li>
+                <li className="text-center">Thu</li>
+                <li className="text-center">Fri</li>
+                <li className="text-center text-blue-500">Sat</li>
+            </ul>
+            <hr />
+            <div className="grid grid-cols-7 gap-4 mt-4">
+                {Array.from({ length: 25 }, (_, i) => (
+                    <div key={i} className=" p-4  text-center hover:shadow-lg transition-shadow duration-300">
+                        <span className="text-2xl font-bold">{i + 1}</span>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

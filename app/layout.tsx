@@ -33,8 +33,8 @@ export default function RootLayout({
           </a>
         </header>
         {children}
-        <footer className="fixed bottom-2 left-1/2 z-50 transform -translate-x-1/2">
-          @Created by とりさん
+        <footer className="text-center mt-12 mb-4 text-sm text-gray-500">
+          @Wathematica 2025
         </footer>
       </body>
     </html>
