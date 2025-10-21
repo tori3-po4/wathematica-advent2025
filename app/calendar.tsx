@@ -1,5 +1,7 @@
 
 export default function Calendar() {
+
+
     return (
         <div className="container mx-auto">
             <ul className="grid grid-cols-7 gap-4 mb-2">
@@ -13,8 +15,9 @@ export default function Calendar() {
             </ul>
             <hr />
             <div className="grid grid-cols-7 gap-4 mt-4">
+                <div className="aspect-square "></div>
                 {Array.from({ length: 25 }, (_, i) => (
-                    <a key={i} href={`#day-${i + 1}`} className="aspect-square p-4 text-center hover:shadow-lg transition-shadow duration-300">
+                    <a key={i} href={`#day-${i + 1}`} className="aspect-square rounded-lg p-4 text-center hover:shadow-lg transition-shadow duration-300">
                         <span className="text-2xl font-bold">{i + 1}</span>
                     </a>
                 ))}
