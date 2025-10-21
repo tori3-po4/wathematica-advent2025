@@ -1,4 +1,5 @@
 import Calendar from './calendar';
+import ArticleList from './articlelist';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         『Wathematica Advent Calendar 2025』とは、12月1日から12月25日までの毎日Wathematicaのメンバーが記事を公開する企画です。<br />
       </p>
       <Calendar />
+      <ArticleList />
     </>
   );
 }
