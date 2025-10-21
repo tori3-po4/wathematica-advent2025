@@ -23,12 +23,12 @@ function Article_Item({ day, author, title, link, description }: { day: number; 
 
         <li id={`day-${day}`} className="pb-2 flex items-center space-x-4 p-4 hover:shadow-lg transition-shadow duration-300 scroll-mt-20">
             <span className="text-lg font-bold">12/{day}</span>
-            <div >
+            <div className="flex flex-col items-center">
                 <img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full" />
-                <span className="text-sm text-gray-500 text-center">{author}</span>
+                <span className="text-xs text-gray-500 text-center mt-2">{author}</span>
             </div>
             <div className="flex-1">
-                <a href={link} className="font-semibold">{title}</a>
+                <a href={link} className="font-semibold text-xl hover:text-blue-400 hover:underline">{title}</a>
                 <p className="text-sm text-gray-500">{description}</p>
             </div>
         </li>

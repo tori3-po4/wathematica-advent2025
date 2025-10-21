@@ -14,7 +14,7 @@ export default function Calendar() {
             <hr />
             <div className="grid grid-cols-7 gap-4 mt-4">
                 {Array.from({ length: 25 }, (_, i) => (
-                    <a key={i} href={`#day-${i + 1}`} className=" p-4  text-center hover:shadow-lg transition-shadow duration-300">
+                    <a key={i} href={`#day-${i + 1}`} className="aspect-square p-4 text-center hover:shadow-lg transition-shadow duration-300">
                         <span className="text-2xl font-bold">{i + 1}</span>
                     </a>
                 ))}
