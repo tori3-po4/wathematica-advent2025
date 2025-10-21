@@ -17,10 +17,10 @@ export default function Calendar({ currentDate }: { currentDate: Date }) {
             <div className="grid grid-cols-7 gap-4 mt-4">
                 <div className="aspect-square "></div>
                 {Array.from({ length: 25 }, (_, i) => {
-                    const day = i + 1;
+                    const day = i;
                     const articleDate = new Date(2025, 11, day, 0, 0, 0);
-                    const isPublished = currentDate >= articleDate;
-
+                    //const isPublished = currentDate >= articleDate;
+                    const isPublished = true;
 
                     return (<Daytag key={day} day={day} isunlocked={isPublished} />);
                 })}
@@ -33,7 +33,8 @@ export function Daytag({ day, isunlocked }: { day: number; isunlocked: boolean }
     return (
         isunlocked ? (<a key={day} href={`#day-${day}`} className="aspect-square  rounded-xl flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
             <span className="text-2xl font-bold">{day + 1}</span>
-        </a>) : (<div
+        </a>
+        ) : (<div
             key={null}
             className="aspect-square  rounded-lg flex items-center justify-center opacity-40 cursor-not-allowed bg-gray-100 relative"
         >
