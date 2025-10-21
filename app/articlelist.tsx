@@ -1,18 +1,38 @@
+'use client';
+import { useState, useEffect } from "react";
 
 export default function ArticleList() {
+    const [currentDate, setCurrentDate] = useState(new Date());
+
+    useEffect(() => {
+        setCurrentDate(new Date());
+
+        const interval = setInterval(() => {
+            setCurrentDate(new Date());
+        }, 60 * 1000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="mt-8 flex items-center justify-center">
             <ul className="space-y-6">
-                {Array.from({ length: 25 }, (_, i) => (
-                    <Article_Item
-                        key={i}
-                        day={i + 1}
-                        author={`著者名${i + 1}`}
-                        title={`記事タイトル${i + 1}`}
-                        link=""
-                        description="この記事はWathematica Advent Calendar 2025の一部です。"
-                    />
-                ))}
+                {Array.from({ length: 25 }, (_, i) => {
+                    const day = i + 1;
+                    const articleDate = new Date(2025, 11, day, 0, 0, 0);
+                    const isPublished = currentDate >= articleDate;
+
+                    if (!isPublished) return null;
+                    return (
+                        <Article_Item
+                            key={i}
+                            day={i + 1}
+                            author={`著者名${i + 1}`}
+                            title={`記事タイトル${i + 1}`}
+                            link=""
+                            description="この記事はWathematica Advent Calendar 2025の一部です。"
+                        />
+                    )
+                })}
             </ul>
         </div>
     )
