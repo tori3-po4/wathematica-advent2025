@@ -1,7 +1,8 @@
+'use client'
 import { useCurrentDay } from '../hooks/useCurrentDay';
 
 export default function ArticleList() {
-    const currentDay = useCurrentDay();
+    const currentDay = useCurrentDay(new Date(2025, 11, 15, 0, 0, 0));
 
     return (
         <div className="mt-8 flex items-center justify-center">
@@ -9,8 +10,8 @@ export default function ArticleList() {
                 {Array.from({ length: 25 }, (_, i) => {
                     const day = i + 1;
                     const articleDate = new Date(2025, 11, day, 0, 0, 0);
-                    //const isPublished = currentDay >= articleDate;
-                    const isPublished = true;
+                    const isPublished = currentDay >= articleDate;
+
                     if (!isPublished) return null;
                     return (
                         <Article_Item

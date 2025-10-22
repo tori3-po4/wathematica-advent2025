@@ -1,7 +1,8 @@
+'use client'
 import { useCurrentDay } from '../hooks/useCurrentDay';
 
 export default function Calendar() {
-    const currentDate = useCurrentDay();
+    const currentDate = useCurrentDay(new Date(2025, 11, 15, 0, 0, 0));
 
     return (
         <div className="container mx-auto">
@@ -18,10 +19,9 @@ export default function Calendar() {
             <div className="grid grid-cols-7 gap-4 mt-4">
                 <div className="aspect-square "></div>
                 {Array.from({ length: 25 }, (_, i) => {
-                    const day = i;
+                    const day = i + 1;
                     const articleDate = new Date(2025, 11, day, 0, 0, 0);
-                    //const isPublished = currentDate >= articleDate;
-                    const isPublished = true;
+                    const isPublished = currentDate >= articleDate;
 
                     return (<Daytag key={day} day={day} isunlocked={isPublished} />);
                 })}
@@ -33,7 +33,7 @@ export default function Calendar() {
 export function Daytag({ day, isunlocked }: { day: number; isunlocked: boolean }) {
     return (
         isunlocked ? (<a key={day} href={`#day-${day}`} className="aspect-square  rounded-xl flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
-            <span className="text-2xl font-bold">{day + 1}</span>
+            <span className="text-2xl font-bold">{day}</span>
         </a>
         ) : (<div
             key={null}
