@@ -1,6 +1,7 @@
+import { useCurrentDay } from '../hooks/useCurrentDay';
 
-
-export default function Calendar({ currentDate }: { currentDate: Date }) {
+export default function Calendar() {
+    const currentDate = useCurrentDay();
 
     return (
         <div className="container mx-auto">

@@ -1,6 +1,7 @@
+import { useCurrentDay } from '../hooks/useCurrentDay';
 
-
-export default function ArticleList({ currentDate }: { currentDate: Date }) {
+export default function ArticleList() {
+    const currentDay = useCurrentDay();
 
     return (
         <div className="mt-8 flex items-center justify-center">
@@ -8,7 +9,7 @@ export default function ArticleList({ currentDate }: { currentDate: Date }) {
                 {Array.from({ length: 25 }, (_, i) => {
                     const day = i + 1;
                     const articleDate = new Date(2025, 11, day, 0, 0, 0);
-                    //const isPublished = currentDate >= articleDate;
+                    //const isPublished = currentDay >= articleDate;
                     const isPublished = true;
                     if (!isPublished) return null;
                     return (
