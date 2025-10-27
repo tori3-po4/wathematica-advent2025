@@ -1,29 +1,46 @@
 'use client'
 import { useCurrentDay } from '../hooks/useCurrentDay';
+import { useEffect, useState } from 'react';
+
+type Article = {
+    id: number;
+    day: number;
+    author: string;
+    title: string;
+    link: string;
+    description: string;
+};
 
 export default function ArticleList() {
     const currentDay = useCurrentDay(new Date(2025, 11, 15, 0, 0, 0));
+    const [articles, setArticles] = useState<Article[]>([]);
+
+    useEffect(() => {
+        fetch('/api/articles')
+            .then(res => res.json())
+            .then(data => setArticles(data));
+    }, []);
 
     return (
         <div className="mt-8 flex items-center justify-center">
             <ul className="space-y-6">
-                {Array.from({ length: 25 }, (_, i) => {
-                    const day = i + 1;
-                    const articleDate = new Date(2025, 11, day, 0, 0, 0);
-                    const isPublished = currentDay >= articleDate;
+                {articles
+                    .map((article) => {
+                        const articleDate = new Date(2025, 11, article.day, 0, 0, 0);
+                        const isPublished = currentDay >= articleDate;
 
-                    if (!isPublished) return null;
-                    return (
-                        <Article_Item
-                            key={i}
-                            day={i + 1}
-                            author={`著者名${i + 1}`}
-                            title={`記事タイトル${i + 1}`}
-                            link=""
-                            description="この記事はWathematica Advent Calendar 2025の一部です。"
-                        />
-                    )
-                })}
+                        if (!isPublished) return null;
+                        return (
+                            <Article_Item
+                                key={article.id}
+                                day={article.day}
+                                author={article.author}
+                                title={article.title}
+                                link={article.link}
+                                description={article.description}
+                            />
+                        )
+                    })}
             </ul>
         </div>
     )
