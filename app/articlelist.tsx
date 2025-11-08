@@ -24,7 +24,7 @@ export default function ArticleList() {
 
     return (
         <div className="mt-8 flex items-center justify-center">
-            <ul className="space-y-6">
+            <ul className="space-y-6 w-full max-w-4xl px-4">
                 {articles
                     .map((article) => {
                         const articleDate = new Date(2025, 11, article.day, 0, 0, 0);
@@ -51,7 +51,7 @@ export default function ArticleList() {
 function Article_Item({ day, author, author_link, title, link, description }: { day: number; author: string; author_link: string; title: string; link: string; description: string }) {
     return (
 
-        <li id={`day-${day}`} className="rounded-lg pb-2 flex items-center space-x-4 p-4 hover:shadow-lg transition-shadow duration-300 scroll-mt-20">
+        <li id={`day-${day}`} className="rounded-lg pb-2 flex items-center space-x-4 p-4 hover:shadow-lg transition-shadow duration-300 scroll-mt-20 w-full">
             <span className="text-lg font-bold">12/{day}</span>
             <Article author={author} author_link={author_link} title={title} link={link} description={description} />
         </li>
@@ -60,7 +60,7 @@ function Article_Item({ day, author, author_link, title, link, description }: { 
 
 function Article({ author, author_link, title, link, description }: { author: string; author_link: string; title: string; link: string; description: string }) {
     return (
-        <div className="flex-1 flex space-x-4">
+        <>
             <div className="flex flex-col items-center">
                 <a href={author_link} >
                     <img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full" />
@@ -71,6 +71,6 @@ function Article({ author, author_link, title, link, description }: { author: st
                 <a href={link} className="font-semibold text-xl hover:text-blue-400 hover:underline">{title}</a>
                 <p className="text-sm text-gray-500">{description}</p>
             </div>
-        </div>
+        </>
     );
 }
