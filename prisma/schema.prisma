@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -14,9 +14,10 @@ datasource db {
 }
 
 model Article{
-  id Int  @id@default(autoincrement())
-  day Int @unique
+  id Int  @id @default(autoincrement())
+  day Int 
   author String
+  author_link String
   title String
   link String
   description String

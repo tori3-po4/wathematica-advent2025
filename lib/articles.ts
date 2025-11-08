@@ -10,6 +10,7 @@ export async function getArticles() {
 
 export async function getArticleByDay(day: number) {
     return await prisma.article.findUnique({
-        where: { day }
+        where: { day },
+        orderBy: { createdAt: 'asc' }
     })
 }

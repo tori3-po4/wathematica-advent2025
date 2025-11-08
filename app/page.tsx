@@ -16,7 +16,7 @@ export default function Home() {
           <br />
           2025</h1>
       </div>
-      <p className="font-light text-center mb-8">
+      <p className="font-light text-center mb-8 mt-8">
         『Wathematica Advent Calendar 2025』とは、12月1日から12月25日までの毎日Wathematicaのメンバーが記事を公開する企画です。<br />
       </p>
       <Calendar />

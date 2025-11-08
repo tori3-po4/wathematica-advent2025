@@ -22,7 +22,6 @@ const eslintConfig = [
   },
   {
     rules: {
-      "indent": ["error", 4],
     },
   },
 ];
