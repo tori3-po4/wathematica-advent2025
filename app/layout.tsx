@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AuthProvider from "./auth-provider";
-import AuthButton from "./auth-button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,20 +25,17 @@ export default function RootLayout({
   return (
     <html lang="jp">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <AuthProvider>
-          <header className="fixed top-4 left-4 z-50">
-            <a
-              href="https://wathematica.github.io/"
-              className="block transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95">
-              <img src="/wathematica_logo.png" alt="ロゴ" className="h-12 w-12 rounded-full shadow-md hover:shadow-xl duration-300" />
-            </a>
-          </header>
-          <AuthButton />
-          {children}
-          <footer className="text-center mt-12 mb-4 text-sm text-gray-500">
-            @Wathematica 2025
-          </footer>
-        </AuthProvider>
+        <header className="fixed top-4 left-4 z-50">
+          <a
+            href="https://wathematica.github.io/"
+            className="block transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95">
+            <img src="/wathematica_logo.png" alt="ロゴ" className="h-12 w-12 rounded-full shadow-md hover:shadow-xl duration-300" />
+          </a>
+        </header>
+        {children}
+        <footer className="text-center mt-12 mb-4 text-sm text-gray-500">
+          @Wathematica 2025
+        </footer>
       </body>
     </html>
   );
