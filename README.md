@@ -6,14 +6,12 @@ The repository ships with a Docker Compose setup that runs the Next.js dev serve
 
 1. Copy the default environment file and adjust values if you need to.
 
-   ```bash
-   cp .env.example .env
-   ```
+   
 
 2. Start the stack (build happens automatically the first time).
 
    ```bash
-   docker compose up --build
+   docker compose --profile dev up db dev
    ```
 
    The Next.js dev server is available at [http://localhost:3000](http://localhost:3000) and hot reload works because the repository is bind-mounted into the container.
