@@ -5,7 +5,6 @@ declare module "next-auth" {
         user: {
             id: string;
             canPost?: boolean;
-            guilds?: Array<{ id: string; name: string }>;
         } & DefaultSession["user"];
         accessToken?: string;
     }

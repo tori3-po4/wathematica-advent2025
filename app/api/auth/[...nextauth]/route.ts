@@ -57,10 +57,6 @@ export const authOptions: NextAuthOptions = {
 
                         // セッションに権限情報を追加
                         session.user.canPost = isInAllowedGuild;
-                        session.user.guilds = guilds.map((g) => ({
-                            id: g.id,
-                            name: g.name,
-                        }));
                     }
                 } catch (error) {
                     console.error('Failed to fetch Discord guilds:', error);
