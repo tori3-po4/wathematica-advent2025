@@ -14,3 +14,12 @@ export async function getArticleByDay(day: number) {
         orderBy: { createdAt: 'asc' }
     })
 }
+
+export async function createArticle(data: {
+    day: number, author: string, author_link?: string, title: string,
+    link: string, description?: string
+}) {
+    return await prisma.article.create({
+        data
+    })
+}
