@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Article } from '@/lib/article_type';
 
 export default function ArticleList() {
-    const currentDay = useCurrentDay(new Date(2025, 11, 15, 0, 0, 0));
     const [articles, setArticles] = useState<Article[]>([]);
 
     useEffect(() => {
