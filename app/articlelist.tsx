@@ -44,7 +44,7 @@ function Article_Item({ day, author, author_link, title, link, description }: { 
             <div className="flex flex-col items-center">
                 <a href={author_link} >
                     <img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full" />
-                    <span className="text-xs text-gray-500 text-center mt-2">{author}</span>
+                    <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span>
                 </a>
             </div>
             <div className="flex-1">
