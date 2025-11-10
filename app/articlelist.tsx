@@ -1,16 +1,7 @@
 'use client'
 import { useCurrentDay } from '../hooks/useCurrentDay';
 import { useEffect, useState } from 'react';
-
-type Article = {
-    id: number;
-    day: number;
-    author: string;
-    author_link: string;
-    title: string;
-    link: string;
-    description: string;
-};
+import { Article } from '@/lib/article_type';
 
 export default function ArticleList() {
     const currentDay = useCurrentDay(new Date(2025, 11, 15, 0, 0, 0));
@@ -27,10 +18,7 @@ export default function ArticleList() {
             <ul className="space-y-6 w-full max-w-4xl px-4">
                 {articles
                     .map((article) => {
-                        const articleDate = new Date(2025, 11, article.day, 0, 0, 0);
-                        const isPublished = currentDay >= articleDate;
 
-                        if (!isPublished) return null;
                         return (
                             <Article_Item
                                 key={article.id}

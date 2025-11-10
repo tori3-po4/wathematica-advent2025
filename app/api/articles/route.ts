@@ -3,10 +3,18 @@ import { getArticles } from "@/lib/articles";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { createArticle } from "@/lib/articles";
+import { Article } from "@/lib/article_type";
 
 export async function GET() {
     const articles = await getArticles();
-    return NextResponse.json(articles);
+
+    const now = new Date(2025, 11, 15, 0, 0, 0);
+    const publishedArticles = articles.filter((article: Article) => {
+        const articleDate = new Date(now.getFullYear(), 11, article.day, 23, 59, 59); // December is month 11
+        return now >= articleDate;
+    });
+
+    return NextResponse.json(publishedArticles);
 }
 
 export async function POST(request: NextRequest) {

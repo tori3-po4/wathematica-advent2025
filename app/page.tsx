@@ -7,8 +7,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-amber-200">
-        <h1 className="text-6xl font-bold font-geist-sans">Wathematica
+      <div className="flex items-center justify-center min-h-screen bg-[url('/wathema_image.png')] bg-cover bg-center">
+        <h1 className="text-7xl font-bold font-geist-sans text-white" >Wathematica
           <br />
           Advent
           <br />
