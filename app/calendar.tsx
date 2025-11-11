@@ -2,7 +2,7 @@
 import { useCurrentDay } from '../hooks/useCurrentDay';
 
 export default function Calendar() {
-    const currentDate = useCurrentDay(new Date(2025, 11, 15, 0, 0, 0));
+    const currentDate = useCurrentDay(new Date());
 
     return (
         <div className="container mx-auto">
@@ -39,9 +39,8 @@ export function Daytag({ day, isunlocked }: { day: number; isunlocked: boolean }
         ) : (
             <div
                 key={null}
-                className="aspect-square  rounded-lg flex items-center justify-center opacity-40 cursor-not-allowed bg-gray-100 relative"
+                className="aspect-square  rounded-xl flex items-center justify-center opacity-40 cursor-not-allowed bg-gray-100 "
             >
                 <span className="text-2xl font-bold text-gray-400">{day}</span>
-                <span className="absolute top-1 right-1 text-xs">🔒</span>
             </div>));
 }

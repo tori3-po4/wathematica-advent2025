@@ -8,7 +8,7 @@ import { Article } from "@/lib/article_type";
 export async function GET() {
     const articles = await getArticles();
 
-    const now = new Date(2025, 11, 15, 0, 0, 0);
+    const now = new Date();
     const publishedArticles = articles.filter((article: Article) => {
         const articleDate = new Date(now.getFullYear(), 11, article.day, 23, 59, 59); // December is month 11
         return now >= articleDate;
