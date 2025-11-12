@@ -20,6 +20,13 @@ export async function createArticle(data: {
     link: string, description?: string
 }) {
     return await prisma.article.create({
-        data
+        data: {
+            day: data.day,
+            author: data.author,
+            author_link: data.author_link ?? null,
+            title: data.title,
+            link: data.link,
+            description: data.description ?? '',
+        }
     })
 }
