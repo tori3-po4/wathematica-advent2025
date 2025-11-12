@@ -35,16 +35,18 @@ export default function ArticleList() {
     )
 }
 
-function Article_Item({ day, author, author_link, title, link, description }: { day: number; author: string; author_link: string; title: string; link: string; description: string }) {
+function Article_Item({ day, author, author_link, title, link, description }: { day: number; author: string; author_link: string | null; title: string; link: string; description: string }) {
     return (
 
         <li id={`day-${day}`} className="rounded-lg pb-2 flex items-center space-x-4 p-4 hover:shadow-lg transition-shadow duration-300 scroll-mt-20 w-full">
             <span className="text-lg font-bold">12/{day}</span>
             <div className='transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95'>
-                <a href={author_link} >
+                {author_link ? (<a href={author_link} >
                     <img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
                     <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span>
-                </a>
+                </a>) :
+                    (<span><img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
+                        <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span></span>)}
             </div>
             <div className="flex-1">
                 <a href={link} className="font-semibold text-xl hover:text-blue-400 hover:underline">{title}</a>
