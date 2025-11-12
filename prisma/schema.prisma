@@ -17,7 +17,7 @@ model Article{
   id Int  @id @default(autoincrement())
   day Int 
   author String
-  author_link String
+  author_link String?
   title String
   link String
   description String
