@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,7 +37,7 @@ export default function RootLayout({
         {children}
         <footer className="text-center mt-12 mb-4 text-sm text-gray-500">
           <div className="mb-2 ml-4">
-            <a href="/privacy" className="hover:underline mr-4">プライバシーポリシー</a>
+            <Link href="/privacy" className="hover:underline mr-4">プライバシーポリシー</Link>
           </div>
           @Wathematica 2025
         </footer>
