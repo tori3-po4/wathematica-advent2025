@@ -32,7 +32,7 @@ If you prefer running everything on the host machine, install dependencies once 
 
 ## デプロイ時に設定すべき環境変数
 
-DATABASE_URL
+DATABASE_URL(Vercelにデプロイする場合は不要かも)
 DISCORD_CLIENT_ID
 DISCORD_CLIENT_SECRET
 NEXTAUTH_URL
