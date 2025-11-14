@@ -28,7 +28,7 @@ export default async function Calendar() {
                 <li className="text-center text-blue-500">Sat</li>
             </ul>
             <hr />
-            <div className="grid grid-cols-7 gap-4 mt-4">
+            <div className="grid grid-cols-7 md:gap-4 gap-0 mt-4">
                 <div className="aspect-square "></div>
                 {Array.from({ length: 25 }, (_, i) => {
                     const day = i + 1;
@@ -46,11 +46,11 @@ export default async function Calendar() {
 export function Daytag({ day, isunlocked, dayIcons }: { day: number; isunlocked: boolean; dayIcons: Array<Icon> }) {
     return (
         isunlocked ? (
-            <a key={day} href={`#day-${day}`} className="relative aspect-square md:rounded-xl rounded-sm flex justify-center items-center hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+            <a key={day} href={`#day-${day}`} className="relative aspect-square md:rounded-xl rounded-sm flex justify-center items-center  cursor-pointer">
                 <span className="absolute md:top-6 md:left-6 md:text-2xl top-1 left-1 text-md font-bold">{day}</span>
                 <div className="relative">
                     {dayIcons.length > 0 && (
-                        <img className="rounded-full md:w-16 md:h-16 w-8 h-8"
+                        <img className="rounded-full xl:w-20 xl:h-20 lg:w-16 lg:h-16 md:h-9 md:w-9  w-8 h-8 hover:scale-105 transition-all duration-300 hover:shadow-lg"
                             src={dayIcons[0].iconUrl || '/wathema_icon.png'} />
 
                     )}
