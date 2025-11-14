@@ -2,7 +2,7 @@
 import { useCurrentDay } from '../hooks/useCurrentDay';
 
 export default function Calendar() {
-    const currentDate = useCurrentDay(new Date());
+    const currentDate = useCurrentDay(new Date(2025, 11, 1));
 
     return (
         <div className="container mx-auto">

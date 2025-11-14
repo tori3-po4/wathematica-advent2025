@@ -16,7 +16,7 @@ export async function getArticleByDay(day: number) {
 }
 
 export async function createArticle(data: {
-    day: number, author: string, author_link?: string, title: string,
+    day: number, author: string, author_link?: string, iconUrl?: string, title: string,
     link: string, description?: string
 }) {
     return await prisma.article.create({
@@ -24,6 +24,7 @@ export async function createArticle(data: {
             day: data.day,
             author: data.author,
             author_link: data.author_link ?? null,
+            iconUrl: data.iconUrl ?? null,
             title: data.title,
             link: data.link,
             description: data.description ?? '',

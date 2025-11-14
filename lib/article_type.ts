@@ -3,6 +3,7 @@ type Article = {
     day: number;
     author: string;
     author_link: string | null;
+    iconUrl: string | null;
     title: string;
     link: string;
     description: string;
