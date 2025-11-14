@@ -4,6 +4,17 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { createArticle } from "@/lib/articles";
 import { Article } from "@/lib/article_type";
+import { z } from "zod";
+
+const articleSchema = z.object({
+    day: z.number().min(1).max(25),
+    author: z.string().min(1, "著者名は必須です。").max(100, "著者名は100文字以内で入力してください。"),
+    author_link: z.url({ message: "著者リンクは有効なURLである必要があります。" }).optional(),
+    iconUrl: z.url({ message: "アイコンURLは有効なURLである必要があります。" }).optional(),
+    title: z.string().min(1, "タイトルは必須です。").max(200, "タイトルは200文字以内で入力してください。"),
+    link: z.url({ message: "記事リンクは有効なURLである必要があります。" }),
+    description: z.string().max(500, "説明文は500文字以内で入力してください。").optional(),
+});
 
 export async function GET() {
     const articles = await getArticles();
@@ -28,14 +39,19 @@ export async function POST(request: NextRequest) {
         }
 
         const body = await request.json();
-        const { day, author, author_link, iconUrl, title, link, description } = body;
-        if (!day || !author || !title || !link) {
-            return NextResponse.json({ error: "必須フィールドが不足しています。" }, { status: 400 });
-        }
-        if (day < 1 || day > 25) {
-            return NextResponse.json({ error: "日付は1から25の間で指定してください。" }, { status: 400 });
+        const validatedResult = articleSchema.safeParse(body);
+        if (!validatedResult.success) {
+            const errors = validatedResult.error.issues.map(err => ({
+                field: err.path.join('.'),
+                message: err.message
+            }));
+            return NextResponse.json({
+                error: "入力データが不正です",
+                details: errors
+            }, { status: 400 });
         }
 
+        const { day, author, author_link, iconUrl, title, link, description } = validatedResult.data;
         const article = await createArticle({ day, author, author_link, iconUrl, title, link, description });
 
         return NextResponse.json(
