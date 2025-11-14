@@ -8,7 +8,7 @@ import { Article } from "@/lib/article_type";
 export async function GET() {
     const articles = await getArticles();
 
-    const now = new Date(); // December 1, 2025
+    const now = new Date(2025, 11, 1); // December 1, 2025
     const publishedArticles = articles.filter((article: Article) => {
         const articleDate = new Date(now.getFullYear(), 11, article.day, 0, 0, 0); // December is month 11
         return now >= articleDate;
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
         }
 
         const body = await request.json();
-        const { day, author, author_link, title, link, description } = body;
+        const { day, author, author_link, iconUrl, title, link, description } = body;
         if (!day || !author || !title || !link) {
             return NextResponse.json({ error: "必須フィールドが不足しています。" }, { status: 400 });
         }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "日付は1から25の間で指定してください。" }, { status: 400 });
         }
 
-        const article = await createArticle({ day, author, author_link, title, link, description });
+        const article = await createArticle({ day, author, author_link, iconUrl, title, link, description });
 
         return NextResponse.json(
             { message: "記事が正常に作成されました。", article },

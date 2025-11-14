@@ -18,6 +18,7 @@ model Article{
   day Int 
   author String
   author_link String?
+  iconUrl String?
   title String
   link String
   description String

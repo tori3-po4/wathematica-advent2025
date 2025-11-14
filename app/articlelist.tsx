@@ -24,6 +24,7 @@ export default function ArticleList() {
                                 day={article.day}
                                 author={article.author}
                                 author_link={article.author_link}
+                                iconUrl={article.iconUrl || undefined}
                                 title={article.title}
                                 link={article.link}
                                 description={article.description}
@@ -35,17 +36,18 @@ export default function ArticleList() {
     )
 }
 
-function Article_Item({ day, author, author_link, title, link, description }: { day: number; author: string; author_link: string | null; title: string; link: string; description: string }) {
+function Article_Item({ day, author, author_link, iconUrl, title, link, description }: { day: number; author: string; author_link: string | null; iconUrl?: string; title: string; link: string; description: string }) {
+    const imageUrl = iconUrl || '/wathematica_logo.png';
     return (
 
         <li id={`day-${day}`} className="rounded-lg pb-2 flex items-center space-x-4 p-4 hover:shadow-lg transition-shadow duration-300 scroll-mt-20 w-full">
             <span className="text-lg font-bold">12/{day}</span>
             <div className='transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95'>
                 {author_link ? (<a href={author_link} >
-                    <img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
+                    <img src={imageUrl} alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
                     <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span>
                 </a>) :
-                    (<span><img src="/wathematica_logo.png" alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
+                    (<span><img src={imageUrl} alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
                         <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span></span>)}
             </div>
             <div className="flex-1">
