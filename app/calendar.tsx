@@ -2,7 +2,7 @@
 import { getArticleIcons } from "@/lib/articles";
 import { Icon } from "@/lib/article_type";
 
-const currentDate = new Date(2025, 11, 1);
+const currentDate = new Date();
 
 export default async function Calendar() {
 
