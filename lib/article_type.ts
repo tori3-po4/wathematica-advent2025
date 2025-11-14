@@ -9,4 +9,9 @@ type Article = {
     description: string;
 };
 
+type Icon = {
+    id: number; day: number; author: string; iconUrl: string | null;
+}
+
 export type { Article };
+export type { Icon };

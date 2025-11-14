@@ -32,8 +32,13 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "サポートされていないファイル形式です。" }, { status: 400 });
         }
 
+        const fileExtension = file.name.split('.').pop();
+        const timestamp = Date.now(); // 例: 1699876543210
+        const newFileName = `${timestamp}.${fileExtension}`;
+
+
         // Vercel Blobにアップロード
-        const blob = await put(file.name, file, {
+        const blob = await put(newFileName, file, {
             access: "public",
         });
 

@@ -15,6 +15,21 @@ export async function getArticleByDay(day: number) {
     })
 }
 
+export async function getArticleIcons() {
+    return await prisma.article.findMany({
+        select: {
+            id: true,
+            day: true,
+            author: true,
+            iconUrl: true,
+        },
+        orderBy: [
+            { day: 'asc' },
+            { createdAt: 'asc' }
+        ]
+    });
+}
+
 export async function createArticle(data: {
     day: number, author: string, author_link?: string, iconUrl?: string, title: string,
     link: string, description?: string
