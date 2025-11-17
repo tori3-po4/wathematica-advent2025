@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+import { fileTypeFromBuffer } from "file-type";
 
 export async function POST(request: NextRequest) {
     try {
@@ -27,19 +28,26 @@ export async function POST(request: NextRequest) {
         }
 
         // ファイルタイプチェック
-        const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
-        if (!allowedTypes.includes(file.type)) {
+
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const fileType = await fileTypeFromBuffer(buffer);
+
+        const allowedMimeTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+        if (!fileType || !allowedMimeTypes.includes(fileType.mime)) {
             return NextResponse.json({ error: "サポートされていないファイル形式です。" }, { status: 400 });
         }
 
-        const fileExtension = file.name.split('.').pop();
+        const fileExtension = fileType.ext;
+        const randomstr = Math.random().toString(36).substring(2, 8);
         const timestamp = Date.now(); // 例: 1699876543210
-        const newFileName = `${timestamp}.${fileExtension}`;
+        const newFileName = `${timestamp}_${randomstr}.${fileExtension}`;
 
 
         // Vercel Blobにアップロード
         const blob = await put(newFileName, file, {
             access: "public",
+            contentType: fileType.mime,
         });
 
         return NextResponse.json({ url: blob.url }, { status: 200 });
