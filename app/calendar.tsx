@@ -2,10 +2,9 @@ import Image from "next/image";
 import { getArticleIcons } from "@/lib/articles";
 import { Icon } from "@/lib/article_type";
 
-const currentDate = new Date();
 
 export default async function Calendar() {
-
+    const currentDate = new Date();
     const articles = await getArticleIcons();
 
     const dayIconMap = articles.reduce((acc: Record<number, Array<Icon>>, article: Icon) => {

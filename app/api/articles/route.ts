@@ -21,7 +21,7 @@ export async function GET() {
 
     const now = new Date();
     const publishedArticles = articles.filter((article: Article) => {
-        const articleDate = new Date(now.getFullYear(), 11, article.day, 0, 0, 0); // December is month 11
+        const articleDate = new Date(2025, 11, article.day, 0, 0, 0); // December is month 11
         return now >= articleDate;
     });
 
