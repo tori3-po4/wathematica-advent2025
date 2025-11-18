@@ -2,6 +2,7 @@
 import { useCurrentDay } from '../hooks/useCurrentDay';
 import { useEffect, useState } from 'react';
 import { Article } from '@/lib/article_type';
+import Image from 'next/image';
 
 export default function ArticleList() {
     const [articles, setArticles] = useState<Article[]>([]);
@@ -44,10 +45,10 @@ function Article_Item({ day, author, author_link, iconUrl, title, link, descript
             <span className="text-lg font-bold">12/{day}</span>
             <div className='transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95'>
                 {author_link ? (<a href={author_link} >
-                    <img src={imageUrl} alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
+                    <Image width={80} height={80} src={imageUrl} alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
                     <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span>
                 </a>) :
-                    (<span><img src={imageUrl} alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
+                    (<span><Image width={80} height={80} src={imageUrl} alt="icon" className="h-16 w-16 rounded-full shadow-md hover:shadow-xl duration-300" />
                         <span className="text-xs text-gray-500 text-center mt-2 px-2">{author}</span></span>)}
             </div>
             <div className="flex-1">
