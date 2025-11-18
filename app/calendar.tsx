@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 import { getArticleIcons } from "@/lib/articles";
 import { Icon } from "@/lib/article_type";
 
@@ -50,7 +50,9 @@ export function Daytag({ day, isunlocked, dayIcons }: { day: number; isunlocked:
                 <span className="absolute md:top-6 md:left-6 md:text-2xl top-1 left-1 text-md font-bold">{day}</span>
                 <div className="relative">
                     {dayIcons.length > 0 && (
-                        <img className="rounded-full xl:w-20 xl:h-20 lg:w-16 lg:h-16 md:h-9 md:w-9  w-8 h-8 hover:scale-105 transition-all duration-300 hover:shadow-lg"
+                        <Image alt="icon"
+                            width={80} height={80}
+                            className="rounded-full xl:w-20 xl:h-20 lg:w-16 lg:h-16 md:h-9 md:w-9 w-8 h-8 hover:scale-105 transition-all duration-300 hover:shadow-lg"
                             src={dayIcons[0].iconUrl || '/wathema_icon.png'} />
 
                     )}

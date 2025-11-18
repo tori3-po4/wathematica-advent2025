@@ -1,13 +1,14 @@
-
 import Calendar from './calendar';
 import ArticleList from './articlelist';
+import Image from 'next/image';
 
 export default function Home() {
 
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-[url('/wathema_image.png')] bg-cover bg-center">
+      <div className="relative flex items-center justify-center min-h-screen">
+        <Image src="/wathema_image.png" alt="Background" fill className='object-cover z-[-1]' />
         <h1 className="md:text-8xl text-6xl font-bold font-geist-sans text-black bg-white/60" >Wathematica
           <br />
           Advent
