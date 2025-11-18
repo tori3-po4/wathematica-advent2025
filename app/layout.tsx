@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "Wathematica Advent Calendar 2025",
   description: "Wathematica Advent Calendar 2025の公式サイトです。",
   icons: {
-    icon: "/wathematica_icon.png",
+    icon: "/wathematica_logo.png",
   }
 };
 
