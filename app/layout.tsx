@@ -33,7 +33,7 @@ export default function RootLayout({
             href="https://wathematica.github.io/"
             className="block transition-all duration-300 hover:scale-110 active:rotate-12 active:scale-95">
             <Image src="/wathematica_logo.png" alt="ロゴ"
-              width={12} height={12}
+              width={48} height={48}
               className="h-12 w-12 rounded-full shadow-md hover:shadow-xl duration-300" />
           </a>
         </header>
