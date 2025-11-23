@@ -37,7 +37,7 @@ export default function ArticleList() {
     )
 }
 
-function Article_Item({ day, author, author_link, iconUrl, title, link, description }: { day: number; author: string; author_link: string | null; iconUrl?: string; title: string; link: string; description: string }) {
+function Article_Item({ day, author, author_link, iconUrl, title, link, description }: { day: number; author: string; author_link: string | null; iconUrl?: string | null; title: string; link: string; description: string }) {
     const imageUrl = iconUrl || '/wathematica_logo.png';
     return (
 

@@ -31,7 +31,7 @@ export async function getArticleIcons() {
 }
 
 export async function createArticle(data: {
-    day: number, author: string, author_link?: string, iconUrl?: string, title: string,
+    day: number, author: string, author_link?: string, iconUrl?: string | null, title: string,
     link: string, description?: string
 }) {
     return await prisma.article.create({

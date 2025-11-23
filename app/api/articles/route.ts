@@ -10,7 +10,7 @@ const articleSchema = z.object({
     day: z.number().min(1).max(25),
     author: z.string().min(1, "著者名は必須です。").max(100, "著者名は100文字以内で入力してください。"),
     author_link: z.union([z.url({ message: "著者リンクは有効なURLである必要があります。" }), z.literal("")]).optional(),
-    iconUrl: z.union([z.url({ message: "アイコンURLは有効なURLである必要があります。" }), z.literal("")]).optional(),
+    iconUrl: z.url({ message: "アイコンURLは有効なURLである必要があります。" }).nullish(),
     title: z.string().min(1, "タイトルは必須です。").max(200, "タイトルは200文字以内で入力してください。"),
     link: z.url({ message: "記事リンクは有効なURLである必要があります。" }),
     description: z.string().max(500, "説明文は500文字以内で入力してください。").optional(),
