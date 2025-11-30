@@ -20,9 +20,12 @@ export async function GET() {
     const articles = await getArticles();
 
     const now = new Date();
+    const jstOffset = 9 * 60; // JST is UTC+9
+    const jstNow = new Date(now.getTime() + (jstOffset + now.getTimezoneOffset()) * 60000);
+
     const publishedArticles = articles.filter((article: Article) => {
         const articleDate = new Date(2025, 11, article.day, 0, 0, 0); // December is month 11
-        return now >= articleDate;
+        return jstNow >= articleDate;
     });
 
     return NextResponse.json(publishedArticles);

@@ -4,7 +4,9 @@ import { Icon } from "@/lib/article_type";
 
 
 export default async function Calendar() {
-    const currentDate = new Date();
+    const now = new Date();
+    const jstOffset = 9 * 60; // JST is UTC+9
+    const currentDate = new Date(now.getTime() + (jstOffset + now.getTimezoneOffset()) * 60000);
     const articles = await getArticleIcons();
 
     const dayIconMap = articles.reduce((acc: Record<number, Array<Icon>>, article: Icon) => {
