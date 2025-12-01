@@ -1,4 +1,3 @@
-'use client';
 import Image from "next/image";
 import { getArticleIcons } from "@/lib/articles";
 import { Icon } from "@/lib/article_type";
