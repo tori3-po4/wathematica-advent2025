@@ -1,7 +1,9 @@
+'use client';
 import Image from "next/image";
 import { getArticleIcons } from "@/lib/articles";
 import { Icon } from "@/lib/article_type";
 
+export const dynamic = 'force-dynamic';
 
 export default async function Calendar() {
     const now = new Date();
